@@ -92,6 +92,15 @@ public class EmployeeController {
         }
     }
 
+    @GetMapping("/delete")
+    public String eliminarEmp(@RequestParam("id") String id) {
+        Optional<EmployeeEntity> opt = employeeRepository.findById(id);
+        if (opt.isPresent()) {
+            employeeRepository.deleteById(id);
+        }
+        return "redirect:/employee/list";
+    }
+
 
 
 }

@@ -19,10 +19,23 @@
     <div class="form-group">
         <label for="manager_id">Jefe</label>
         <select name="manager_id" id="manager_id" class="form-control">
-            <option th:each="region, i : ${region}" th:value="${region.manager_id}"
-                    th:text="${region.regiondescription}"></option>
+            <option th:each="empleado, i : ${listaEmpleados}" th:value="${empleado.manager_id}"
+                    th:text="${empleado.first_name}"></option>
         </select>
     </div>
+
+    <div class="form-group">
+        <label for="manager_id">Location</label>
+        <select name="manager_id" id="manager_id" class="form-control">
+            <option th:each="empleado, i : ${listaEmpleados}" th:value="${empleado.manager_id}"
+                    th:text="${empleado.first_name}"></option>
+        </select>
+    </div>
+
+
+
+
+
     <div class="form-group">
         <b><label   for="department_short_name">Department Short Name</label></b>
         <input  name="department_short_name" type="text" class="form-control" id="department_short_name">

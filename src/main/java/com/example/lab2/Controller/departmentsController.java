@@ -1,7 +1,9 @@
 package com.example.lab2.Controller;
 
 import com.example.lab2.Entity.Departments;
+import com.example.lab2.Entity.EmployeeEntity;
 import com.example.lab2.Entity.Location;
+import com.example.lab2.Repository.EmployeeRepository;
 import com.example.lab2.Repository.departmentsRepository;
 import com.example.lab2.Repository.locationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,8 @@ public class departmentsController {
     departmentsRepository departmentsRepository;
     @Autowired
     locationRepository locationRepository;
+    @Autowired
+    EmployeeRepository employeeRepository;
 
     @GetMapping("/lista")
     public String lista(Model model){
@@ -34,11 +38,13 @@ public class departmentsController {
     }
 
     @GetMapping("/nuevo")
-    public String nuevo(){
+    public String nuevo(Model model){
 
-
-
-        return "departments/nuevoDepartments"; }
+        List<EmployeeEntity> listaEmployee = employeeRepository.findAll();
+        List<Location> listaLocation = locationRepository.findAll();
+        model.addAttribute("listaEmpleados", listaEmployee);
+        model.addAttribute("listaLocation", listaLocation);
+        return "departments/newDepartments"; }
 
     @PostMapping("/guardar")
     public String guardar(Departments departments, RedirectAttributes attr){
@@ -71,15 +77,6 @@ public class departmentsController {
 
     }
 
-    @GetMapping("/borrar")
-    public String borrar(@RequestParam("id") int id,RedirectAttributes attr){
-        Optional<Departments> opt = departmentsRepository.findById(id);
-        if(opt.isPresent()) {
-            attr.addFlashAttribute("mensaje","Borrado Exitosamente");
-            departmentsRepository.deleteById(id);
-        }
-        return "redirect:/lista";
-    }
 
 
     @GetMapping("/borrar")
