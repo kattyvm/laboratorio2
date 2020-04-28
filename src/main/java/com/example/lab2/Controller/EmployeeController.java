@@ -46,4 +46,19 @@ public class EmployeeController {
             return "redirect:/employee/list";
         }
     }
+
+
+    @GetMapping("/create")
+    public String crearEmp(Model model) {
+        List<Job> listaJob = jobRepository.findAll();
+        List<Department> listaDep = departmentRepository.findAll();
+        List<Employee> listaMan = employeeRepository.findAll();
+        model.addAttribute("listaJob", listaJob);
+        model.addAttribute("listaDep", listaDep);
+        model.addAttribute("listaMan", listaMan);
+        return "employee/crear";
+    }
+
+
+
 }
