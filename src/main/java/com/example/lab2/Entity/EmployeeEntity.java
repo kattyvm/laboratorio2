@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name= "employees")
@@ -17,7 +18,54 @@ public class EmployeeEntity {
     @Column(nullable = false)
     private String email;
     private String phone_number;
+    @Column(nullable = false)
+    private String job_id;
+    private BigDecimal salary;
+    private BigDecimal commission_pct;
+    private String manager_id;
+    @Column(nullable = false)
+    private int department_id;
 
+
+    public String getJob_id() {
+        return job_id;
+    }
+
+    public void setJob_id(String job_id) {
+        this.job_id = job_id;
+    }
+
+    public BigDecimal getSalary() {
+        return salary;
+    }
+
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
+    }
+
+    public BigDecimal getCommission_pct() {
+        return commission_pct;
+    }
+
+    public void setCommission_pct(BigDecimal commission_pct) {
+        this.commission_pct = commission_pct;
+    }
+
+    public String getManager_id() {
+        return manager_id;
+    }
+
+    public void setManager_id(String manager_id) {
+        this.manager_id = manager_id;
+    }
+
+    public int getDepartment_id() {
+        return department_id;
+    }
+
+    public void setDepartment_id(int department_id) {
+        this.department_id = department_id;
+    }
 
     public String getEmployeeid() {
         return employeeid;
