@@ -69,7 +69,7 @@ public class EmployeeController {
         }
 
         employeeRepository.save(emp);
-        return "redirect:/employee/list";
+        return "redirect:/employees/list";
     }
 
     @GetMapping("/edit")
