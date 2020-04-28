@@ -36,6 +36,8 @@ public class JobController {
         return "redirect:/job/lista";
     }
 
+    @GetMapping("")
+
 }
 
 
