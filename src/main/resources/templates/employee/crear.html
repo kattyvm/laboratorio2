@@ -11,7 +11,7 @@
         <h2>Nuevo Empleado</h2>
         <hr/>
 
-        <form method="post" th:action="@{'/employee/save'}">
+        <form method="post" th:action="@{'/employees/save'}">
             <div class="form-group">
                 <label for="first_name">Nombre</label>
                 <input name="first_name" type="text" class="form-control" id="first_name">
@@ -52,7 +52,7 @@
                     <option th:each="dep : ${listaDep}" th:value="${dep.department_id}" th:text="${dep.department_name}"></option>
                 </select>
             </div>
-            <a th:href="@{'/employee/list'}" class="btn btn-danger">Cancelar</a>
+            <a th:href="@{'/employees/list'}" class="btn btn-danger">Cancelar</a>
             <button type="submit" class="btn btn-primary">Registrar</button>
         </form>
 
