@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body class="container">
+<h2>Lista Departments</h2>
+<a class="btn btn-info" th:href="@{'/departments/nuevo'}" >Agregar Departamento</a>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+
+        <th >Name</th>
+        <th >Manager_Id</th>
+        <th >Ciudad</th>
+        <th></th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="c:${lista}"  >
+        <th th:text="${c.department_name}"></th>
+        <th th:text="${c.manager_id}"></th>
+        <th th:text="${c.departmentshortname}"></th>
+        <th><a class="btn btn-primary" th:href="@{'/editarD'+'?id='+${c.department_id}}">Editar Departamento</a></th>
+        <th><a class="btn btn-danger" th:href="@{'/borrarD'+'?id='+${c.department_id}}" >Borrar Departamento</a></th>
+
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

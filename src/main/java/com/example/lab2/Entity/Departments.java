@@ -16,8 +16,16 @@ public class Departments {
     private  String department_name;
     private String manager_id;
     private int location_id;
-    @Column(nullable=false)
-    private String department_short_name;
+    @Column(name="department_short_name")
+    private String departmentshortname;
+
+    public String getDepartmentshortname() {
+        return departmentshortname;
+    }
+
+    public void setDepartmentshortname(String departmentshortname) {
+        this.departmentshortname = departmentshortname;
+    }
 
     public int getDepartment_id() {
         return department_id;
@@ -51,11 +59,6 @@ public class Departments {
         this.location_id = location_id;
     }
 
-    public String getDepartment_short_name() {
-        return department_short_name;
-    }
 
-    public void setDepartment_short_name(String department_short_name) {
-        this.department_short_name = department_short_name;
-    }
+
 }

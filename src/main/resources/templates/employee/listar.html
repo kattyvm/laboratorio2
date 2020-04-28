@@ -7,7 +7,7 @@
     </head>
     <body class="container">
         <h2>Lista de Empleados</h2>
-        <a class="btn btn-primary mt-4 mb-4" th:href="@{'/employee/create'}">Nuevo Empleado</a>
+        <a class="btn btn-primary mt-4 mb-4" th:href="@{'/employees/create'}">Nuevo Empleado</a>
 
         <table class="table table-sm">
             <tr>
@@ -27,12 +27,12 @@
                 <td th:text="${emp.first_name} + ' ' + ${emp.last_name}"></td>
                 <td th:text="${emp.email}"></td>
                 <td th:text="${emp.phone_number}"></td>
-                <td th:text="${emp.job_id}"></td>
+                <td th:text="${emp.jobid}"></td>
                 <td th:text="${emp.salary}"></td>
                 <td th:text="${emp.manager_id==null}? 'Sin jefe' : ${emp.manager_id}"></td>
                 <td th:text="${emp.department_id}"></td>
-                <td><a class="btn btn-primary" th:href="@{'/employee/edit?id=' + ${emp.employeeid}}">Editar</a></td>
-                <td><a class="btn btn-danger" th:href="@{'/employee/delete?id=' + ${emp.employeeid}}">Borrar</a></td>
+                <td><a class="btn btn-primary" th:href="@{'/employees/edit?id=' + ${emp.employeeid}}">Editar</a></td>
+                <td><a class="btn btn-danger" th:href="@{'/employees/delete?id=' + ${emp.employeeid}}">Borrar</a></td>
             </tr>
         </table>
         

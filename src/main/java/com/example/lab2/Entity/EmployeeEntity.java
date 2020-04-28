@@ -18,8 +18,8 @@ public class EmployeeEntity {
     @Column(nullable = false)
     private String email;
     private String phone_number;
-    @Column(nullable = false)
-    private String job_id;
+    @Column(nullable = false , name = "job_id")
+    private String jobid;
     private BigDecimal salary;
     private BigDecimal commission_pct;
     private String manager_id;
@@ -27,12 +27,12 @@ public class EmployeeEntity {
     private int department_id;
 
 
-    public String getJob_id() {
-        return job_id;
+    public String getJobid() {
+        return jobid;
     }
 
-    public void setJob_id(String job_id) {
-        this.job_id = job_id;
+    public void setJob_id(String jobid) {
+        this.jobid = jobid;
     }
 
     public BigDecimal getSalary() {
