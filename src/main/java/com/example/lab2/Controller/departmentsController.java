@@ -23,6 +23,9 @@ public class departmentsController {
         return "deparments/listaDepartments";
     }
 
+    @GetMapping("/nuevo")
+    public String nuevo(){ return "departments/nuevoDepartments"; }
+
 
 
 
