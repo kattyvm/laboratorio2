@@ -37,11 +37,6 @@ public class JobController {
     @GetMapping("/editar")
     public String editarpersona(@RequestParam("id") String id, Model model){
         Optional<Job> opt = jobRepository.findById(id);
-        @PostMapping("/guardar")
-        public String guardarpersona(Job job){
-            jobRepository.save(job);
-            return "redirect:/job/lista";
-        }
         if (opt.isPresent()){
             Job job = opt.get();
             model.addAttribute("job",job);
@@ -49,6 +44,12 @@ public class JobController {
         }else {
             return "redirect:/job/lista";
         }
+    }
+
+    @PostMapping("/guardar")
+    public String guardarpersona(Job job){
+        jobRepository.save(job);
+        return "redirect:/job/lista";
     }
 
     @GetMapping("/borrar")
