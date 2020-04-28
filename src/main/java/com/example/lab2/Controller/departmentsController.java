@@ -82,5 +82,14 @@ public class departmentsController {
     }
 
 
+    @GetMapping("/borrar")
+    public String borrar(@RequestParam("id") int id,RedirectAttributes attr){
+        Optional<Departments> opt = departmentsRepository.findById(id);
+        if(opt.isPresent()) {
+            attr.addFlashAttribute("mensaje","Borrado Exitosamente");
+            departmentsRepository.deleteById(id);
+        }
+        return "redirect:/lista";
+    }
 
 }
