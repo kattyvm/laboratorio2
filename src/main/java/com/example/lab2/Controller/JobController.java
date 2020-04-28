@@ -25,6 +25,17 @@ public class JobController {
         return "job/lista";
     }
 
+    @GetMapping("/nuevo")
+    public String nuevopersona(){
+        return "/job/formulario";
+    }
+
+    @PostMapping("/guardar")
+    public String guardarpersona(Job job){
+        jobRepository.save(job);
+        return "redirect:/job/lista";
+    }
+
 }
 
 
