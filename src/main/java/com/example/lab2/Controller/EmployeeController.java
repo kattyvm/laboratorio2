@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.persistence.Entity;
 import java.util.List;
@@ -49,7 +50,8 @@ public class EmployeeController {
     }
 
     @PostMapping("/save")
-    public String guardarEmp(EmployeeEntity emp) {
+    public String guardarEmp(EmployeeEntity emp,
+                             RedirectAttributes attr) {
 
         if (emp.getEmployeeid()==null) {
             List<EmployeeEntity> listaEmp = employeeRepository.findAll(Sort.by("employeeid").descending());
@@ -66,6 +68,9 @@ public class EmployeeController {
 
             String idFinal= idNumstr +"_" +dSN;
             emp.setEmployeeid(idFinal);
+            attr.addFlashAttribute("msg", "Empleado creado exitosamente");
+        } else {
+            attr.addFlashAttribute("msg", "Empleado actualizado exitosamente");
         }
 
         employeeRepository.save(emp);
@@ -88,17 +93,27 @@ public class EmployeeController {
             model.addAttribute("employee", employee);
             return "employee/editar";
         } else {
-            return "redirect:/employee/list";
+            return "redirect:/employees/list";
         }
     }
 
     @GetMapping("/delete")
-    public String eliminarEmp(@RequestParam("id") String id) {
+    public String eliminarEmp(@RequestParam("id") String id,
+                              RedirectAttributes attr) {
         Optional<EmployeeEntity> opt = employeeRepository.findById(id);
         if (opt.isPresent()) {
             employeeRepository.deleteById(id);
+            attr.addFlashAttribute("msg", "Empleado eliminado exitosamente");
         }
-        return "redirect:/employee/list";
+        return "redirect:/employees/list";
+    }
+
+    @PostMapping("/buscar")
+    public String buscarPorNombreYApellido(@RequestParam("searchField") String sf,
+                                        Model model) {
+        List<EmployeeEntity> listaFL = employeeRepository.findByFirstnameOrLastname(sf);
+        model.addAttribute("lista", listaFL);
+        return "employee/listar";
     }
 
 

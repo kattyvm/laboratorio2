@@ -8,6 +8,11 @@
     <body class="container">
         <h2>Lista de Empleados</h2>
         <a class="btn btn-primary mt-4 mb-4" th:href="@{'/employees/create'}">Nuevo Empleado</a>
+        <div th:if="${msg != null}" th:text="${msg}" class="alert alert-success" role="alert"></div>
+
+        <form method="post" th:action="@{/employees/buscar}">
+            <input name="searchField" class="form-control mb-3" type="text" placeholder="Buscar"/>
+        </form>
 
         <table class="table table-sm">
             <tr>
@@ -24,7 +29,7 @@
             </tr>
             <tr th:each="emp, i:${lista}">
                 <td th:text="${i.index +1}"></td>
-                <td th:text="${emp.first_name} + ' ' + ${emp.last_name}"></td>
+                <td th:text="${emp.firstname} + ' ' + ${emp.lastname}"></td>
                 <td th:text="${emp.email}"></td>
                 <td th:text="${emp.phone_number}"></td>
                 <td th:text="${emp.jobid}"></td>

@@ -12,9 +12,10 @@ public class EmployeeEntity {
     @Id
     @Column(name = "employee_id")
     private String employeeid;
-    private String first_name;
-    @Column(nullable = false)
-    private String last_name;
+    @Column(name = "first_name")
+    private String firstname;
+    @Column(nullable = false, name = "last_name")
+    private String lastname;
     @Column(nullable = false)
     private String email;
     private String phone_number;
@@ -75,20 +76,20 @@ public class EmployeeEntity {
         this.employeeid = employeeid;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getEmail() {
