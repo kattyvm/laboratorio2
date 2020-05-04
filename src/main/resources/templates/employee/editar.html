@@ -15,11 +15,11 @@
         <form method="post" th:action="@{'/employees/save'}">
             <div class="form-group">
                 <label for="first_name">Nombre</label>
-                <input name="first_name" type="text" class="form-control" id="first_name" th:value="${employee.first_name}">
+                <input name="first_name" type="text" class="form-control" id="first_name" th:value="${employee.firstname}">
             </div>
             <div class="form-group">
                 <label for="last_name">Apellido</label>
-                <input name="last_name" type="text" class="form-control" id="last_name" th:value="${employee.last_name}">
+                <input name="last_name" type="text" class="form-control" id="last_name" th:value="${employee.lastname}">
             </div>
             <div class="form-group">
                 <label for="email">E-mail</label>
